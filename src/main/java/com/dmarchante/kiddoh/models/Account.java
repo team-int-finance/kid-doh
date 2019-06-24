@@ -1,5 +1,7 @@
 package com.dmarchante.kiddoh.models;
 
+
+
 import javax.persistence.Entity;
 import javax.persistence.*;
 
@@ -9,7 +11,7 @@ public class Account {
         Fields
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String type;
     private String name;
@@ -21,7 +23,7 @@ public class Account {
     @ManyToOne
     private AppUser user;
     //One account will have many transactions
-    @OneToMany(mappedBy = "")
+    //@OneToMany(mappedBy = "")
     //private List<Transcation> transcationList;
     /*
        constructors
@@ -29,12 +31,11 @@ public class Account {
     //Default Cons
     public Account(){};
     //Param Cons
-    public Account(String name,String type, float balance, AppUser user){
+    public Account(String name,String type, float balance, AppUser User){
         this.setName(name);
         this.setBalance(balance);
         this.setType(type);
-
-
+        this.setUser(user);
     }
     /*
         Properties: Setters and Getters
@@ -69,5 +70,13 @@ public class Account {
 
     public void setBalance(float balance) {
         this.balance = balance;
+    }
+
+    public AppUser getUser() {
+        return user;
+    }
+
+    public void setUser(AppUser user) {
+        this.user = user;
     }
 }
