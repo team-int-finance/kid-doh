@@ -40,7 +40,16 @@ public class Transaction {
 /****************
  * Constructors
  * */
+    public Transaction(String date, Currency amount) {
+        this.date = date;
+        this.amount = amount;
+    }
 
+    public Transaction(String date, Category category, Currency amount) {
+        this.date = date;
+        this.category = category;
+        this.amount = amount;
+    }
 
 
 
