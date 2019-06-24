@@ -12,3 +12,15 @@
 
 ### 6) As a user I want to stay on top of my spending and financial activities. 
 
+### 7) As a user I want to be able to create an profile in order to login into the application
+
+### 8) As a user I want to be able to check my profile page.
+
+### 8) As a user I want to be able to add an account based on the name and bank
+
+### 9) As a user I want to be able to add expenses associte to the account. 
+
+### 10) As a user I want to be able to access my dash board which give graphical representation of data
+
+### 11) As a user I want to be able to successfully logout from my profile
+
