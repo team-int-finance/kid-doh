@@ -8,6 +8,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 import java.util.Currency;
 
+
+/****************
+ * Enum Class
+ * */
+enum Category {
+    Charity, Saving, Housing, Utilities, Food, Clothing, Transportation, Medical, Health, Insurance, Personal, Recreation, Debts;
+}
+
+
+/****************
+ * Model
+ * */
 @Entity
 public class Transaction {
 /****************
@@ -17,16 +29,19 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private Currency amount;
     private String date;
+    private Category category,
+    private Currency amount;
 
-    @ManyToOne//(mappedBy = "name")
+    @ManyToOne
     Account account;
 
 
 /****************
  * Constructors
  * */
+
+
 
 
 /****************
