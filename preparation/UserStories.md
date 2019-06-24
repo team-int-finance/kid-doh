@@ -8,7 +8,7 @@
 
 ### 4) As a user I want to track a type of expense and take control of my financial history so that I can learn how to save effectively.
 
-### 5) As a user I want to stay on top of my spending and financial activities so that I can budget effective;y. 
+### 5) As a user I want to stay on top of my spending and financial activities so that I can budget effectively. 
 
 ### 6) As a user I want to be able to create a profile so that I can login into the application.
 
