@@ -33,9 +33,8 @@ public class Transaction {
     private Category category;
     private Currency amount;
 
-    //@ManyToOne
-    //Account account;
-    String account;
+    @ManyToOne
+    Account account;
 
 
 /****************
@@ -57,12 +56,12 @@ public class Transaction {
  * Getters / Setters
  * */
     public long getId() { return this.id; }
-    public String getAccount() {return this.account; }
+    public Account getAccount() {return this.account; }
     public String getDate() { return this.date; }
     public Category getCategory() { return this.category; }
     public Currency getAmount() { return this.amount; }
 
-    public void setAccount(String account) { this.account = account; }
+    public void setAccount(Account account) { this.account = account; }
     public void setDate(String date) { this.date = date; }
     public void setCategory(Category category) { this.category = category; }
     public void setAmount(Currency amount) { this.amount = amount; }

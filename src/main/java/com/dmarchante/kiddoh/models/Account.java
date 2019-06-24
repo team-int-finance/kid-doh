@@ -2,6 +2,7 @@ package com.dmarchante.kiddoh.models;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Account {
@@ -21,8 +22,8 @@ public class Account {
     @ManyToOne
     private AppUser user;
     //One account will have many transactions
-    //@OneToMany(mappedBy = "")
-    //private List<Transcation> transcationList;
+    @OneToMany(mappedBy = "account")
+    private List<Transaction> transcationList;
     /*
        constructors
      */
