@@ -30,7 +30,7 @@ public class Transaction {
     private long id;
 
     private String date;
-    private Category category,
+    private Category category;
     private Currency amount;
 
     //@ManyToOne
@@ -66,10 +66,4 @@ public class Transaction {
     public void setDate(String date) { this.date = date; }
     public void setCategory(Category category) { this.category = category; }
     public void setAmount(Currency amount) { this.amount = amount; }
-
-
-
-/****************
- * Instance Methods
- * */
 }
