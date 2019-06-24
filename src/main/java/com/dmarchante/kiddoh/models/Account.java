@@ -24,6 +24,7 @@ public class Account {
     //One account will have many transactions
     @OneToMany(mappedBy = "account")
     private List<Transaction> transcationList;
+
     /*
        constructors
      */
