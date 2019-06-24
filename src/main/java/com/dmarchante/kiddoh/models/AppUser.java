@@ -1,6 +1,7 @@
 package com.dmarchante.kiddoh.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class AppUser {
