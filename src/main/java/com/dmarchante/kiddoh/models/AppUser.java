@@ -1,6 +1,7 @@
 package com.dmarchante.kiddoh.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class AppUser {
@@ -14,7 +15,7 @@ public class AppUser {
 
     String password;
 
-    @OneToMany(mappedBy = user)
+    @OneToMany(mappedBy = "user")
     List<Account> myAccounts;
 
     public AppUser(){}

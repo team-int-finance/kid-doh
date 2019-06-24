@@ -1,6 +1,7 @@
 package com.dmarchante.kiddoh.controllers;
 
 import com.dmarchante.kiddoh.models.AppUser;
+import com.dmarchante.kiddoh.repositories.AccountRepo;
 import com.dmarchante.kiddoh.repositories.AppUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,8 +13,8 @@ public class AppUserController {
     @Autowired
     AppUserRepo appUserRepo;
 
-//    @Autowired
-//    something for user accounts
+    @Autowired
+    AccountRepo accountRepo;
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -24,4 +25,6 @@ public class AppUserController {
         appUserRepo.save(newUser);
         return new RedirectView("/");
     }
+
+
 }

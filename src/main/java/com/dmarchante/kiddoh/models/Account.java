@@ -19,7 +19,7 @@ public class Account {
      */
     //Many account will have one user
     @ManyToOne
-    //private User user;
+    private AppUser user;
     //One account will have many transactions
     @OneToMany(mappedBy = "")
     //private List<Transcation> transcationList;
@@ -29,10 +29,12 @@ public class Account {
     //Default Cons
     public Account(){};
     //Param Cons
-    public Account(String name,String type, float balance, User){
+    public Account(String name,String type, float balance, AppUser user){
         this.setName(name);
         this.setBalance(balance);
         this.setType(type);
+
+
     }
     /*
         Properties: Setters and Getters
