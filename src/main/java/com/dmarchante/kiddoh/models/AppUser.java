@@ -15,7 +15,7 @@ public class AppUser {
 
     String password;
 
-    @OneToMany(mappedBy = user)
+    @OneToMany(mappedBy = "user")
     List<Account> myAccounts;
 
     public AppUser(){}
