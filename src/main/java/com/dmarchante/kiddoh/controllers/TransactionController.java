@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class TransactionController {
 
     @GetMapping("/accounts")
-    public String getAccounts() { }
+    public String getAccounts() { return "accounts"; }
 
 }
