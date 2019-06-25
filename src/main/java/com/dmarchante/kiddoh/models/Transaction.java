@@ -1,5 +1,9 @@
 package com.dmarchante.kiddoh.models;
 
+<<<<<<< HEAD
+=======
+import javax.persistence.Id;
+>>>>>>> 0631aaf91cd63e617210fdecc4777dc3b32bd1f9
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
