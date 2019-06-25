@@ -40,5 +40,4 @@ public class AppUserController {
             return new RedirectView("/signup?error=uniqueUserName");
         }
     }
-
 }
