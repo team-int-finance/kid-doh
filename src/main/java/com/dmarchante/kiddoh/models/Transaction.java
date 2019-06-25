@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
+import java.math.BigDecimal;
 import java.util.Currency;
 
 
@@ -23,7 +24,7 @@ public class Transaction {
 
     private String date;
     private Category category;
-    private Currency amount;
+    private BigDecimal amount;
 
     @ManyToOne
     Account account;
@@ -32,12 +33,12 @@ public class Transaction {
 /****************
  * Constructors
  * */
-    public Transaction(String date, Currency amount) {
+    public Transaction(String date, BigDecimal amount) {
         this.date = date;
         this.amount = amount;
     }
 
-    public Transaction(String date, Category category, Currency amount) {
+    public Transaction(String date, Category category, BigDecimal amount) {
         this.date = date;
         this.category = category;
         this.amount = amount;
@@ -51,12 +52,12 @@ public class Transaction {
     public Account getAccount() {return this.account; }
     public String getDate() { return this.date; }
     public Category getCategory() { return this.category; }
-    public Currency getAmount() { return this.amount; }
+    public BigDecimal getAmount() { return this.amount; }
 
     public void setAccount(Account account) { this.account = account; }
     public void setDate(String date) { this.date = date; }
     public void setCategory(Category category) { this.category = category; }
-    public void setAmount(Currency amount) { this.amount = amount; }
+    public void setAmount(BigDecimal amount) { this.amount = amount; }
 }
 
 
