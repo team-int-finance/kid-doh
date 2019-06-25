@@ -32,7 +32,7 @@ public class Account {
     //Default Cons
     public Account(){};
     //Param Cons
-    public Account(String name,String type,  BigDecimal balance, AppUser User){
+    public Account(String name,String type,  BigDecimal balance, AppUser user){
         this.setName(name);
         this.setBalance(balance);
         this.setType(type);

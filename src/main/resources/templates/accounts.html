@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Kid-doh Accounts</h1>
-    <div th:each="account : ${userAccounts}">
+    <div th:each="account : ${accounts}">
         <div th:text="${account.name}"></div>
         <div th:text="${account.type}"></div>
         <div th:text="${account.balance}"></div>

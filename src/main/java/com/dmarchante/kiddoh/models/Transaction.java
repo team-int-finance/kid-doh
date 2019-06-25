@@ -42,6 +42,12 @@ public class Transaction {
         this.amount = amount;
     }
 
+    public Transaction(String date, Category category, BigDecimal amount, Account account) {
+        this.date = date;
+        this.category = category;
+        this.amount = amount;
+        this.account = account;
+    }
 
 /****************
  * Getters / Setters
@@ -62,6 +68,6 @@ public class Transaction {
 /****************
  * Enum Class
  * */
-enum Category {
+public enum Category {
     Toys, VideoGames, Movies, Books, Food, Clothing, Miscellaneous
 }
