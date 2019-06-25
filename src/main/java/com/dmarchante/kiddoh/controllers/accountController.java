@@ -12,14 +12,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.math.BigDecimal;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
 
 @Controller
 public class accountController {
-    //Type of account available
-    List<String> accountType = new ArrayList<String>();
+
     //Auto wire
     @Autowired
     AccountRepo accountRepo;
@@ -27,16 +28,18 @@ public class accountController {
     AppUserRepo appUserRepo;
     @GetMapping("/addAccount")
     public String addAccount(Model m){
+        //Type of account available
+        List<String> accountType = new ArrayList<String>();
         accountType.add("Checking");
         accountType.add("Savings");
         m.addAttribute("accountType",accountType);
-        return "account";
+        return "addAccount";
     }
     @PostMapping(value="/addAccount")
     public RedirectView addAccount(@RequestParam String name, String type, String balance, Principal p){
         try{
-            float bal = Float.parseFloat(balance);
-            Account newAccount = new Account(name,type,bal, appUserRepo.findByUsername(p.getName()));
+            BigDecimal bal = new BigDecimal(balance);
+            Account newAccount = new Account(name,type,bal, appUserRepo.findByUserName(p.getName()));
             accountRepo.save(newAccount);
             return new RedirectView("myAccount");
         }
