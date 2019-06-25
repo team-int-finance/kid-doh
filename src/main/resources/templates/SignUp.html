@@ -8,10 +8,11 @@
 
 <h1>Welcome to Kid-Doh</h1>
 <p th:if="${error.equals('uniqueUserName')}">Requires Unique UserName</p>
-<form method="POST" action="/createUser">
+<p>Please select a unique user name and password for your account.</p>
+<form method="POST" action="/signup">
     UserName: <input type="text" placeholder="User Name" name="userName" />
     Password: <input type="text" placeholder="Password" name="password" />
-    <input type="submit" value="Log In"/>
+    <input type="submit" value="Sign Up"/>
 </form>
 </body>
 </html>
