@@ -13,7 +13,7 @@ import java.util.Currency;
  * Enum Class
  * */
 enum Category {
-    Charity, Saving, Housing, Utilities, Food, Clothing, Transportation, Medical, Health, Insurance, Personal, Recreation, Debts;
+    Toys, VideoGames, Movies, Books, Food, Clothing
 }
 
 
