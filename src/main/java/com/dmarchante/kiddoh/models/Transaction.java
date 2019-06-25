@@ -64,5 +64,5 @@ public class Transaction {
  * Enum Class
  * */
 enum Category {
-    Toys, VideoGames, Movies, Books, Food, Clothing
+    Toys, VideoGames, Movies, Books, Food, Clothing, Miscellaneous
 }
