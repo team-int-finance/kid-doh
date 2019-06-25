@@ -29,8 +29,8 @@ public class AppUserController {
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @PostMapping("/signup")
-    public RedirectView createUser(String userName, String password, Principal p, Model m){
-        AppUser newUser = new AppUser(userName, bCryptPasswordEncoder.encode(password));
+    public RedirectView createUser(String username, String password, Principal p, Model m){
+        AppUser newUser = new AppUser(username, bCryptPasswordEncoder.encode(password));
         try {
             appUserRepo.save(newUser);
             m.addAttribute("principal", p);

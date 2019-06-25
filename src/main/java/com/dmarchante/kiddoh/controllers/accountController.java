@@ -36,7 +36,7 @@ public class accountController {
     public RedirectView addAccount(@RequestParam String name, String type, String balance, Principal p){
         try{
             float bal = Float.parseFloat(balance);
-            Account newAccount = new Account(name,type,bal, appUserRepo.findByUserName(p.getName()));
+            Account newAccount = new Account(name,type,bal, appUserRepo.findByUsername(p.getName()));
             accountRepo.save(newAccount);
             return new RedirectView("myAccount");
         }

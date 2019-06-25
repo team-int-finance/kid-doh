@@ -10,7 +10,7 @@
 <p th:if="${error.equals('uniqueUserName')}">Requires Unique UserName</p>
 <p>Please select a unique user name and password for your account.</p>
 <form method="POST" action="/signup">
-    UserName: <input type="text" placeholder="User Name" name="userName" />
+    UserName: <input type="text" placeholder="User Name" name="username" />
     Password: <input type="text" placeholder="Password" name="password" />
     <input type="submit" value="Sign Up"/>
 </form>

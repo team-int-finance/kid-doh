@@ -15,7 +15,7 @@ public class AppUser implements UserDetails {
     long id;
 
     @Column(unique = true)
-    String userName;
+    String username;
 
     String password;
 
@@ -24,13 +24,13 @@ public class AppUser implements UserDetails {
 
     public AppUser(){}
 
-    public AppUser(String userName, String password){
-        this.userName = userName;
+    public AppUser(String username, String password){
+        this.username = username;
         this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     @Override
@@ -40,11 +40,6 @@ public class AppUser implements UserDetails {
 
     public String getPassword() {
         return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return userName;
     }
 
     @Override
