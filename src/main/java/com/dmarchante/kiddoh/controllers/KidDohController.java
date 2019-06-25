@@ -14,7 +14,6 @@ public class KidDohController {
     public String getHomePage(Model m, Principal p){
         m.addAttribute("principal", p);
         return p == null ? "login" : "tempAccounts"; //TODO change this to accounts once
-//        return "Home";
     }
 
     @GetMapping("/signup")
@@ -22,7 +21,6 @@ public class KidDohController {
         m.addAttribute("principal", p);
         m.addAttribute("error", error);
         return "signUp";
-//        return "Home";
     }
 
     @GetMapping("/login")
