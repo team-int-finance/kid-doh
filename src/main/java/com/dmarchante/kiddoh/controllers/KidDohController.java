@@ -13,7 +13,7 @@ public class KidDohController {
     @GetMapping("/")
     public String getHomePage(Model m, Principal p){
         m.addAttribute("principal", p);
-        return p == null ? "Login" : "tempAccounts";
+        return p == null ? "Login" : "tempAccounts"; //TODO change this to accounts once
 //        return "Home";
     }
 
