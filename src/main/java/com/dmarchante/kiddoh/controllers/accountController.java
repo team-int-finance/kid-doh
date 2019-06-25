@@ -4,6 +4,7 @@ import com.dmarchante.kiddoh.models.Account;
 import com.dmarchante.kiddoh.models.AppUser;
 import com.dmarchante.kiddoh.repositories.AccountRepo;
 import com.dmarchante.kiddoh.repositories.AppUserRepo;
+import org.hibernate.jdbc.Expectation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,11 +40,32 @@ public class accountController {
     public RedirectView addAccount(@RequestParam String name, String type, String balance, Principal p){
         try{
             BigDecimal bal = new BigDecimal(balance);
-            Account newAccount = new Account(name,type,bal, appUserRepo.findByUserName(p.getName()));
+            Account newAccount = new Account(name,type,bal, appUserRepo.findByUsername(p.getName()));
             accountRepo.save(newAccount);
             return new RedirectView("myAccount");
         }
         catch(Exception ex){
+            return new RedirectView("/error");
+        }
+    }
+    @GetMapping("/editAccount/{id}")
+    public String editAccount(@RequestParam long id, Model m, Principal p){
+        //get the information for the selected account
+        Account acc = accountRepo.findById(id).get();
+        // m.addAttribute("user",user);
+        return "editAccount";
+    }
+    @PostMapping(value = "/editAccount/{id}")
+    public RedirectView editAccount(@RequestParam Long id, String name, String type, String balance, Principal p) {
+        try {
+            BigDecimal bal = new BigDecimal(balance);
+            Account updatedAcc = accountRepo.findById(id).get();
+            updatedAcc.setType(type);
+            updatedAcc.setType(name);
+            updatedAcc.setBalance(bal);
+            accountRepo.save(updatedAcc);
+            return new RedirectView("myAccount");
+        } catch (Exception ex) {
             return new RedirectView("/error");
         }
     }
