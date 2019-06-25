@@ -13,20 +13,18 @@ public class KidDohController {
     @GetMapping("/")
     public String getHomePage(Model m, Principal p){
         m.addAttribute("principal", p);
-        return p == null ? "Login" : "tempAccounts"; //TODO change this to accounts once
-//        return "Home";
+        return p == null ? "login" : "tempAccounts"; //TODO change this to accounts once
     }
 
     @GetMapping("/signup")
     public String getSignUpPage(@RequestParam (required = false, defaultValue = "")String error, Model m, Principal p){
         m.addAttribute("principal", p);
         m.addAttribute("error", error);
-        return "SignUp";
-//        return "Home";
+        return "signUp";
     }
 
     @GetMapping("/login")
     public String logIn(){
-        return "Login";
+        return "login";
     }
 }
