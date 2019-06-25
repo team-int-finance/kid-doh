@@ -19,7 +19,7 @@ import java.util.Currency;
 import java.util.List;
 
 @Controller
-public class accountController {
+public class AccountController {
 
     //Auto wire
     @Autowired
