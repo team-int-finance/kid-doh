@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Kid-doh | Accounts</title>
 </head>
 <body>
-    <h1>I will add accounts here</h1>
+    <h1>Kid-doh Accounts</h1>
+    <div th:each="account : ${userAccounts}">
+        <div th:text="${account.name}"></div>
+        <div th:text="${account.type}"></div>
+        <div th:text="${account.balance}"></div>
+    </div>
 </body>
 </html>

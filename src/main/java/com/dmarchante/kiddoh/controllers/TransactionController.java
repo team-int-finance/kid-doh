@@ -25,15 +25,13 @@ public class TransactionController {
     @Autowired
     TransactionRepository transactionRepository;
 
-    @GetMapping("/myAccount")
-    public String getAccounts() {
-//        List<Account> accounts = (List<Account>) accountRepo.findAll();
-//
-//        m.addAttribute("userAccounts", accounts);
+    @GetMapping("/myAccounts")
+    public String getAccounts(Principal p, Model m) {
+        List<Account> accounts = (List<Account>) accountRepo.findAll();
+
+        m.addAttribute("accounts", accounts);
 
         return "accounts";
     }
-
-
 
 }
