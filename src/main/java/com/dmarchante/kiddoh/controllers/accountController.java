@@ -42,7 +42,7 @@ public class accountController {
             BigDecimal bal = new BigDecimal(balance);
             Account newAccount = new Account(name,type,bal, appUserRepo.findByUserName(p.getName()));
             accountRepo.save(newAccount);
-            return new RedirectView("myAccount");
+            return new RedirectView("accounts");
         }
         catch(Exception ex){
             return new RedirectView("/error");
