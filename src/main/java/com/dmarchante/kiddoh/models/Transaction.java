@@ -10,14 +10,6 @@ import java.util.Currency;
 
 
 /****************
- * Enum Class
- * */
-enum Category {
-    Toys, VideoGames, Movies, Books, Food, Clothing
-}
-
-
-/****************
  * Model
  * */
 @Entity
@@ -65,4 +57,12 @@ public class Transaction {
     public void setDate(String date) { this.date = date; }
     public void setCategory(Category category) { this.category = category; }
     public void setAmount(Currency amount) { this.amount = amount; }
+}
+
+
+/****************
+ * Enum Class
+ * */
+enum Category {
+    Toys, VideoGames, Movies, Books, Food, Clothing
 }
