@@ -19,22 +19,25 @@ import java.util.Currency;
 import java.util.List;
 
 @Controller
-public class accountController {
-
+public class AccountController {
     //Auto wire
     @Autowired
     AccountRepo accountRepo;
+
     @Autowired
     AppUserRepo appUserRepo;
+
     @GetMapping("/addAccount")
-    public String addAccount(Model m){
+    public String addAccount(Model m, Principal p){
         //Type of account available
         List<String> accountType = new ArrayList<String>();
         accountType.add("Checking");
         accountType.add("Savings");
+        m.addAttribute("principal", p);
         m.addAttribute("accountType",accountType);
         return "addAccount";
     }
+
     @PostMapping(value="/addAccount")
     public RedirectView addAccount(@RequestParam String name, String type, String balance, Principal p){
         try{
