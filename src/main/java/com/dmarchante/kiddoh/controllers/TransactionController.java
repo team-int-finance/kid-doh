@@ -9,4 +9,7 @@ public class TransactionController {
     @GetMapping("/accounts")
     public String getAccounts() { return "accounts"; }
 
+    @GetMapping("/transactions")
+    public String getTransactions() { return "transactions"; }
+
 }
