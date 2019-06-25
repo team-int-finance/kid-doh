@@ -38,7 +38,6 @@ public class accountController {
     @PostMapping(value="/addAccount")
     public RedirectView addAccount(@RequestParam String name, String type, String balance, Principal p){
         try{
-
             BigDecimal bal = new BigDecimal(balance);
             Account newAccount = new Account(name,type,bal, appUserRepo.findByUserName(p.getName()));
             accountRepo.save(newAccount);

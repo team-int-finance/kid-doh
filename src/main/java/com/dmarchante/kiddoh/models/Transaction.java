@@ -1,5 +1,6 @@
 package com.dmarchante.kiddoh.models;
 
+
 import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
