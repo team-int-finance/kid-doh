@@ -1,13 +1,11 @@
 package com.dmarchante.kiddoh.models;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
+import javax.persistence.Id;
 import java.math.BigDecimal;
-import java.util.Currency;
 
 
 /****************
