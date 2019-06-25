@@ -4,6 +4,8 @@ package com.dmarchante.kiddoh.models;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Currency;
 
 @Entity
 public class Account {
@@ -15,7 +17,7 @@ public class Account {
     private long id;
     private String type;
     private String name;
-    private float balance;
+    private BigDecimal balance;
     /*
         Fields: relationship
      */
@@ -31,7 +33,7 @@ public class Account {
     //Default Cons
     public Account(){};
     //Param Cons
-    public Account(String name,String type, float balance, AppUser User){
+    public Account(String name,String type,  BigDecimal balance, AppUser User){
         this.setName(name);
         this.setBalance(balance);
         this.setType(type);
@@ -64,11 +66,11 @@ public class Account {
         this.name = name;
     }
 
-    public float getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(float balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 
