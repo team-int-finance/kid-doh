@@ -3,14 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Kid-doh | Accounts</title>
+    <!--bootstrap-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <!--Inner styling-->
+    <link href="/main.css" rel="stylesheet" />
+    <!--link for boot strap JS-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                     crossorigin="anonymous">
+</script>
 </head>
 <body>
+<div th:replace="${principal != null} ? ~{fragments/authHeader :: header(principal=${principal})} : ~{fragments/mainHeader:: header}"></div>
+<main>
     <h1>Kid-doh Accounts</h1>
+    <!--alert-->
+    <div th:if="${message != null}">
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong th:text="${message}"></strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
     <div th:if="${!accounts.isEmpty()}">
+        <a href="/account/add"><button class="btn btn-primary">Add account</button></a>
+
         <div th:each="account : ${accounts}">
             <span th:text="${account.name}"></span>
             <span th:text="${account.type}"></span>
             Balance: $<span th:text="${account.balance}"></span>
+            <a th:href="@{'/account/' + ${account.id} + '/edit'}"><button class="btn btn-primary">Edit account</button></a>
+            <a th:href="@{'/account/' + ${account.id} + '/delete'}"><button class="btn btn-danger">Delete account</button></a>
             <div th:each="transaction : ${account.transactionList}">
                 <span th:text="${transaction.date}"></span>
                 <span th:text="${transaction.category}"></span>
@@ -43,15 +76,14 @@
             </label>
 
             <label>
-                Amount: <input type="text" name="amount" />
+                Amount: <input type="text" name="amount" required/>
             </label>
-            <input type="submit">
-
-            <a th:href="@{/account/add}">Make a new account!</a>
+            <button type="submit" class="btn btn-primary" >Submit Transaction</button>
         </form>
     </div>
     <div th:if="${accounts.isEmpty()}">
-        <h2>Please add an <a th:href="@{/account/add}">account</a></h2>
+        <a href="/account/add"><button class="btn btn-primary">Add account</button></a>
     </div>
+</main>
 </body>
 </html>
