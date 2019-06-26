@@ -1,5 +1,7 @@
 package com.dmarchante.kiddoh.models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.Entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -23,7 +25,8 @@ public class Account {
     @ManyToOne
     private AppUser user;
     //One account will have many transactions
-    @OneToMany(mappedBy = "account")
+
+    @OneToMany( cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "account")
     private List<Transaction> transactionList;
 
     /*
