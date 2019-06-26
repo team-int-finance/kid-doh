@@ -91,12 +91,7 @@ public class Account {
     /*
         Methods: Private
      */
-    private void updateBalance() {
-        for(Transaction transaction: this.transactionList){
-            BigDecimal currentBalance = this.getBalance();
-            BigDecimal transactionAmount = transaction.getAmount();
-
-            this.setBalance(currentBalance.subtract(transactionAmount));
-        }
+    public void updateBalance(BigDecimal transactionAmount) {
+            this.setBalance(this.getBalance().subtract(transactionAmount));
     }
 }
