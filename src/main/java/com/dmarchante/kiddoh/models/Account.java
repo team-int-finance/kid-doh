@@ -82,4 +82,19 @@ public class Account {
     }
 
     public List<Transaction> getTransactionList() { return this.transactionList; }
+    /*
+        Methods: APIS
+     */
+    public void updateBalance(){
+        updateBalance(this.getBalance());
+    }
+    /*
+        Methods: Private
+     */
+    private void updateBalance(BigDecimal balance){
+        for(Transaction item: this.transactionList){
+            //To Do: un-comment this out
+            //this.setBalance(this.getBalance() - item.getAmount());
+        }
+    }
 }
