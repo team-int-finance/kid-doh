@@ -62,7 +62,7 @@ public class TransactionController {
             Account account = accountRepo.findByName(accountName);
             Transaction transaction = new Transaction(date, Transaction.Category.valueOf(transactionCategory), new BigDecimal(amount), account);
 
-            account.updateBalance(transaction.getAmount());
+            account.updateBalance(transaction);
 
             transactionRepository.save(transaction);
             accountRepo.save(account);

@@ -5,6 +5,8 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static com.dmarchante.kiddoh.models.Transaction.Category.Deposit;
+
 @Entity
 public class Account {
     /*
@@ -91,7 +93,13 @@ public class Account {
     /*
         Methods: Private
      */
-    public void updateBalance(BigDecimal transactionAmount) {
+    public void updateBalance(Transaction transaction) {
+        BigDecimal transactionAmount = transaction.getAmount();
+
+        if (transaction.getCategory() == (Enum) Deposit) {
+            this.setBalance(this.getBalance().add(transactionAmount));
+        } else {
             this.setBalance(this.getBalance().subtract(transactionAmount));
+        }
     }
 }
