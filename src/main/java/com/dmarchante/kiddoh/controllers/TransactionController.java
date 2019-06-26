@@ -11,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
+import java.math.BigDecimal;
 import java.security.Principal;
 import java.util.List;
 
@@ -37,4 +39,9 @@ public class TransactionController {
         return "accounts";
     }
 
+    @PostMapping("/myAccounts")
+    public RedirectView addTransaction(String date, String category, String amount) {
+
+        return new RedirectView("/myAccounts");
+    }
 }
