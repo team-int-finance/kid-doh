@@ -49,7 +49,7 @@
         </form>
     </div>
     <div th:if="${accounts.isEmpty()}">
-        <h2>Please add an <a href="/account/add">account</a></h2>
+        <h2>Please add an <a th:href="@{/account/add}">account</a></h2>
     </div>
 </body>
 </html>
