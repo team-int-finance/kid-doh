@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Kid-doh | Accounts</title>
@@ -35,49 +35,55 @@
         </div>
     </div>
 
-    <a href="/account/add"><button class="btn btn-primary">Add account</button></a>
-    <div th:each="account : ${accounts}">
-        <span th:text="${account.name}"></span>
-        <span th:text="${account.type}"></span>
-        Balance: $<span th:text="${account.balance}"></span>
-        <a th:href="@{'/account/' + ${account.id} + '/edit'}"><button class="btn btn-primary">Edit account</button></a>
-        <a th:href="@{'/account/' + ${account.id} + '/delete'}"><button class="btn btn-danger">Delete account</button></a>
-        <div th:each="transaction : ${account.transactionList}">
-            <span th:text="${transaction.date}"></span>
-            <span th:text="${transaction.category}"></span>
-            <span th:text="${transaction.amount}"></span>
+    <div th:if="${!accounts.isEmpty()}">
+        <a href="/account/add"><button class="btn btn-primary">Add account</button></a>
+
+        <div th:each="account : ${accounts}">
+            <span th:text="${account.name}"></span>
+            <span th:text="${account.type}"></span>
+            Balance: $<span th:text="${account.balance}"></span>
+            <a th:href="@{'/account/' + ${account.id} + '/edit'}"><button class="btn btn-primary">Edit account</button></a>
+            <a th:href="@{'/account/' + ${account.id} + '/delete'}"><button class="btn btn-danger">Delete account</button></a>
+            <div th:each="transaction : ${account.transactionList}">
+                <span th:text="${transaction.date}"></span>
+                <span th:text="${transaction.category}"></span>
+                <span th:text="${transaction.amount}"></span>
+            </div>
         </div>
+
+        <form action="/myAccounts" method="POST">
+            <label>
+                Date: <input type="text" name="date" />
+            </label>
+            <label>
+                Category:
+                <select name="transactionCategory" id="category" >
+                    <option th:each="category : ${categories}"
+                            th:value="${category}"
+                            th:text="${category}">
+                    </option>
+                </select>
+            </label>
+
+            <label>
+                Account:
+                <select name="accountName" id="accountName" >
+                    <option th:each="accountName : ${accountNames}"
+                            th:value="${accountName}"
+                            th:text="${accountName}">
+                    </option>
+                </select>
+            </label>
+
+            <label>
+                Amount: <input type="text" name="amount" required/>
+            </label>
+            <button type="submit" class="btn btn-primary" >Submit Transaction</button>
+        </form>
     </div>
-
-    <form action="/myAccounts" method="POST">
-        <label>
-            Date: <input type="date" name="date" required/>
-        </label>
-        <label>
-            Category:
-            <select name="transactionCategory" id="category" >
-                <option th:each="category : ${categories}"
-                        th:value="${category}"
-                        th:text="${category}">
-                </option>
-            </select>
-        </label>
-
-        <label>
-            Account:
-            <select name="accountName" id="accountName" >
-                <option th:each="accountName : ${accountNames}"
-                        th:value="${accountName}"
-                        th:text="${accountName}">
-                </option>
-            </select>
-        </label>
-
-        <label>
-            Amount: <input type="text" name="amount" required/>
-        </label>
-        <button type="submit" class="btn btn-primary" >Submit Transaction</button>
-    </form>
+    <div th:if="${accounts.isEmpty()}">
+        <a href="/account/add"><button class="btn btn-primary">Add account</button></a>
+    </div>
 </main>
 </body>
 </html>
