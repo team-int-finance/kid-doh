@@ -38,17 +38,21 @@ public class AccountController {
         m.addAttribute("accountType",accountType);
         return "addAccount";
     }
-     @PostMapping(value="/account/add")
+
+    @PostMapping(value="/account/add")
     public RedirectView addAccount(@RequestParam String name, String type, String balance, Principal p){
+
         try{
             BigDecimal bal = new BigDecimal(balance);
             AppUser user = appUserRepo.findByUsername(p.getName());
             Account newAccount = new Account(name,type,bal,user);
             accountRepo.save(newAccount);
-            return new RedirectView("myAccount");
+            return new RedirectView("/myAccounts");
+            //return "accounts";
         }
         catch(Exception ex){
             return new RedirectView("/error");
+            //return null;
         }
     }
     @GetMapping("/account/{id}/edit")

@@ -24,7 +24,7 @@ public class Account {
     private AppUser user;
     //One account will have many transactions
     @OneToMany(mappedBy = "account")
-    private List<Transaction> transcationList;
+    private List<Transaction> transactionList;
 
     /*
        constructors
@@ -81,6 +81,7 @@ public class Account {
         this.user = user;
     }
 
+    public List<Transaction> getTransactionList() { return this.transactionList; }
     /*
         Methods: APIS
      */
@@ -91,10 +92,9 @@ public class Account {
         Methods: Private
      */
     private void updateBalance(BigDecimal balance){
-        for(Transaction item: this.transcationList){
+        for(Transaction item: this.transactionList){
             //To Do: un-comment this out
             //this.setBalance(this.getBalance() - item.getAmount());
         }
     }
-
 }
