@@ -1,4 +1,4 @@
-package com.dmarchante.kiddoh.dto;
+package com.dmarchante.kiddoh.models;
 
 public class DataPoint {
     private Integer X;
