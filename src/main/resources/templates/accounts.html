@@ -15,6 +15,26 @@
             <span th:text="${transaction.category}"></span>
             <span th:text="${transaction.amount}"></span>
         </div>
+
+        <form action="/myAccounts" method="POST">
+            <label>
+                Date: <input type="text" name="date" required/>
+            </label>
+            <label>
+                Category:
+                <select name="category" id="" required>
+                    <option th:each="category : ${categories}"
+                            th:value="${category}"
+                            th:text="${category}">
+                    </option>
+                </select>
+            </label>
+
+            <label>
+                Amount: <input type="text" name="amount" required/>
+            </label>
+            <input type="submit">
+        </form>
     </div>
 </body>
 </html>

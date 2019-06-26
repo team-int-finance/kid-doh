@@ -15,6 +15,8 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.math.BigDecimal;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 
 @Controller
@@ -33,8 +35,10 @@ public class TransactionController {
     public String getAccounts(Principal p, Model m) {
         AppUser user = appUserRepo.findByUsername(p.getName());
         List<Account> accounts = user.getMyAccounts();
+        List<Enum> categories = new ArrayList<Enum>(EnumSet.allOf(Transaction.Category.class));
 
         m.addAttribute("accounts", accounts);
+        m.addAttribute("categories", categories);
 
         return "accounts";
     }

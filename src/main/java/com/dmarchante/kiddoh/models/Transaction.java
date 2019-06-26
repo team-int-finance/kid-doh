@@ -69,7 +69,7 @@ public class Transaction {
 /****************
  * Enum
  * */
-    public enum Category {
+    public static enum Category {
         Toys, VideoGames, Movies, Books, Food, Clothing, Miscellaneous
     }
 }
