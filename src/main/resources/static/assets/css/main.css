@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch|Open+Sans:600&display=swap');
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+#header-logo {
+  font-family: 'Cabin Sketch', cursive;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 25px;
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: #ff5A49;
+}
+
+.header-container a {
+  text-decoration: none;
+}
+
+.header-container h1 {
+  color: #fff;
+}
+
+main {
+  padding: 0 25px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
