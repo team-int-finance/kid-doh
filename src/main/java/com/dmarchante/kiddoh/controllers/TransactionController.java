@@ -1,5 +1,6 @@
 package com.dmarchante.kiddoh.controllers;
 
+import com.dmarchante.kiddoh.models.DataPoint;
 import com.dmarchante.kiddoh.models.Account;
 import com.dmarchante.kiddoh.models.AppUser;
 import com.dmarchante.kiddoh.models.Transaction;
@@ -9,11 +10,13 @@ import com.dmarchante.kiddoh.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.security.Principal;
 import java.util.ArrayList;
@@ -43,7 +46,7 @@ public class TransactionController {
             for (Account account : accounts) {
                 accountNames.add(account.getName());
             }
-
+            m.addAttribute("principal",p);
             m.addAttribute("accounts", accounts);
             m.addAttribute("categories", categories);
             m.addAttribute("accountNames", accountNames);
@@ -62,7 +65,10 @@ public class TransactionController {
             Account account = accountRepo.findByName(accountName);
             Transaction transaction = new Transaction(date, Transaction.Category.valueOf(transactionCategory), new BigDecimal(amount), account);
 
+            account.updateBalance(transaction);
+
             transactionRepository.save(transaction);
+            accountRepo.save(account);
 
             return new RedirectView("/myAccounts");
 
@@ -70,5 +76,29 @@ public class TransactionController {
 
             return new RedirectView("/error");
         }
+    }
+
+    @GetMapping("/dashboard")
+    public String getDashboard(ModelMap m) throws IOException {
+        List<DataPoint> dataPoints = new ArrayList<>();
+
+        DataPoint dataPoint = new DataPoint();
+        dataPoint.setX(10);
+        dataPoint.setY(15);
+        dataPoints.add(dataPoint);
+
+        dataPoint = new DataPoint();
+        dataPoint.setX(20);
+        dataPoint.setY(21);
+        dataPoints.add(dataPoint);
+
+        dataPoint = new DataPoint();
+        dataPoint.setX(30);
+        dataPoint.setY(8);
+        dataPoints.add(dataPoint);
+
+        m.addAttribute("dataPoints",dataPoints);
+
+        return "dashboard";
     }
 }
