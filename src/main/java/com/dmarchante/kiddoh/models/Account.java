@@ -85,16 +85,18 @@ public class Account {
     /*
         Methods: APIS
      */
-    public void updateBalance(){
-        updateBalance(this.getBalance());
-    }
+//    public void updateBalance(){
+//        updateBalance(this.getBalance());
+//    }
     /*
         Methods: Private
      */
-    private void updateBalance(BigDecimal balance){
-        for(Transaction item: this.transactionList){
-            //To Do: un-comment this out
-            //this.setBalance(this.getBalance() - item.getAmount());
+    private void updateBalance() {
+        for(Transaction transaction: this.transactionList){
+            BigDecimal currentBalance = this.getBalance();
+            BigDecimal transactionAmount = transaction.getAmount();
+
+            this.setBalance(currentBalance.subtract(transactionAmount));
         }
     }
 }
