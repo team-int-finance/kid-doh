@@ -50,7 +50,7 @@ public class TransactionController {
     }
 
     @PostMapping("/myAccounts")
-    public RedirectView addTransaction(Principal p, String date, String category, String amount) {
+    public RedirectView addTransaction(String date, String category, String account, String amount) {
 
 
         return new RedirectView("/myAccounts");
