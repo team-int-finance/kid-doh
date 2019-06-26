@@ -15,6 +15,15 @@ body {
   padding: 0 25px;
   max-width: 1400px;
   margin: 0 auto;
+  background-color: #ff5A49;
+}
+
+.header-container a {
+  text-decoration: none;
+}
+
+.header-container h1 {
+  color: #fff;
 }
 
 main {
