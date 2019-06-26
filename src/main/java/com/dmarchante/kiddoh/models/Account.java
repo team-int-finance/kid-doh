@@ -80,4 +80,6 @@ public class Account {
     public void setUser(AppUser user) {
         this.user = user;
     }
+
+    public List<Transaction> getTranscationList() { return this.transcationList; }
 }
