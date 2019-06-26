@@ -1,146 +1,50 @@
+ <!--chart.jsp-->
+<!--<%@ page language="java" contentType="text/html; charset=ISO-8859-1"-->
+<!--pageEncoding="ISO-8859-1"%>-->
+<!--<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>-->
 <!DOCTYPE html>
-
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!--<![endif]-->
-
-<head>
-    <title>HighCharts Demo | Carey Development Demos</title>
-    <!--<meta content="This demo shows how to use HighCharts with Spring Boot" name="description" />-->
-    <!--<object th:include="fragments/head :: head" th:remove="tag"></object>-->
-
-    <link th:href="@{/assets/css/main.css}" rel="stylesheet" type="text/css" />
-    <link th:href="@{/assets/css/profile.min.css}" rel="stylesheet" type="text/css" />
-</head>
-
-<body class="page-container-bg-solid">
- <div class="page-container">
-    <div class="page-content-wrapper">
-        <div class="page-head" style="background-color:#eff3f8;padding-top:40px">
-            <div class="container">
-                <div class="row" style="margin-bottom:30px">
-                    <div class="col-md-6">
-                        <h1>Sales: May - July</h1>
-                    </div>
-                </div>
-                <div class="row" style="margin-bottom:30px">
-                    <div class="col-md-6" style="margin-top:20px">
-                        <div id="salesByType" style="width:100%; height:400px;"></div>
-                    </div>
-                    <div class="col-md-6" style="margin-top:20px">
-                        <div id="salesByRegion" style="width:100%; height:400px;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script th:inline="javascript">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head xmlns:th="http://www.thymeleaf.org">
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <title>Dashboard</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous">
+        <link href="/main.css" rel="stylesheet" />
+        <script th:inline="javascript">
         /*<![CDATA[*/
-            $(function () {
-                Highcharts.setOptions({
-                    lang: {
-                        decimalPoint: '.',
-                        thousandsSep: ','
-                    }
-                });
-                drawSalesByTypeChart();
-				drawSalesByRegionChart();
+        window.onload = function() {
+
+            var dataPoints = /*[[${dataPoints}]]*/ 'default';
+
+            dataPoints.forEach(myFunction);
+            function myFunction(value, index, array) {
+    	        console.log(value);
+            }
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+	            animationEnabled: true,
+	            theme: "light2",
+	            title: {
+		            text: "Visitor Demographics of a Website"
+	            },
+	            data: [{
+		            type: "line",
+		            dataPoints: []
+	            }]
             });
 
+        chart.options.data[0].dataPoints = dataPoints;
+        chart.render();
+    /*]]>*/
+    }
+    </script>
+    </head>
+    <body>
+        <div th:replace="${principal != null} ? ~{fragments/authHeader :: header(principal=${principal})} : ~{fragments/mainHeader:: header}"></div>
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 
-            function drawSalesByRegionChart() {
-                var salesByRegionChart = Highcharts.chart('salesByRegion', {
-                    chart: {
-                        type: 'pie',
-                        margin: 40,
-                        options3d: {
-                    		enabled: true,
-                            alpha: 45,
-                            beta: 0
-                        }
-                    },
-                    title: {
-                        text: 'Sales by Region'
-                    },
-                    tooltip: {
-                      	pointFormat: "${point.y:,.0f}"
-                    },
-                    plotOptions: {
-                    	pie: {
-                    		allowPointSelect: true,
-                    		depth: 35
-                    	}
-                    },
-                    series: [{
-                        name: 'Regions',
-                        colorByPoint:true,
-                        data: [{
-                            name: 'Northeast',
-                            y: /*[[${northeastSales}]]*/ 0
-                        },{
-                            name: 'South',
-                            y: /*[[${southSales}]]*/ 0
-                        },{
-                            name: 'Midwest',
-                            y: /*[[${midwestSales}]]*/ 0
-                        },{
-                            name: 'West',
-                            y: /*[[${westSales}]]*/ 0
-                        }]
-                	}]
-                });
-            }
-
-            function drawSalesByTypeChart() {
-                var salesByTypeChart = Highcharts.chart('salesByType', {
-                    chart: {
-                        type: 'column',
-                        margin: 75,
-                        options3d: {
-   							enabled: true,
-                        	alpha: 15,
-                        	beta: 15,
-                        	depth: 110
-                        }
-                    },
-                    title: {
-                        text: 'Sales by Lure Type'
-                    },
-                    xAxis: {
-                        categories: ['May', 'June', 'July']
-                    },
-                    yAxis: {
-                        title: {
-                            text: 'Sales (US $)'
-                        }
-                    },
-                    tooltip: {
-                      	pointFormat: "${point.y:,.0f}"
-                    },
-                    plotOptions: {
-                    	column: {
-                    		depth: 60,
-                      		stacking: true,
-                       		grouping: false,
-                      		groupZPadding: 10
-                        }
-                    },
-                    series: [{
-                        name: 'Inshore',
-                        data: /*[[${inshoreSales}]]*/ []
-                    }, {
-                        name: 'Nearshore',
-                        data: /*[[${nearshoreSales}]]*/ []
-                    }, {
-                        name: 'Offshore',
-                        data: /*[[${offshoreSales}]]*/ []
-                    }]
-                });
-            }
-            /*]]>*/
-        </script>
-</body>
+    </body>
 </html>

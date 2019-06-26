@@ -3,7 +3,7 @@ package com.dmarchante.kiddoh.dto;
 public class DataPoint {
     private Integer X;
     private Integer Y;
-    
+
     public Integer getX() {
         return X;
     }
