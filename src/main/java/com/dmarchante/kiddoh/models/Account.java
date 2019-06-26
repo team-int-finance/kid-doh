@@ -32,7 +32,7 @@ public class Account {
     //Default Cons
     public Account(){};
     //Param Cons
-    public Account(String name,String type,  BigDecimal balance, AppUser User){
+    public Account(String name,String type,  BigDecimal balance, AppUser user){
         this.setName(name);
         this.setBalance(balance);
         this.setType(type);
@@ -80,4 +80,21 @@ public class Account {
     public void setUser(AppUser user) {
         this.user = user;
     }
+
+    /*
+        Methods: APIS
+     */
+    public void updateBalance(){
+        updateBalance(this.getBalance());
+    }
+    /*
+        Methods: Private
+     */
+    private void updateBalance(BigDecimal balance){
+        for(Transaction item: this.transcationList){
+            //To Do: un-comment this out
+            //this.setBalance(this.getBalance() - item.getAmount());
+        }
+    }
+
 }

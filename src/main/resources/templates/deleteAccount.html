@@ -12,26 +12,23 @@
 <!--<div th:replace="fragments/authHeader :: header(principal)">...</div>-->
 <div class="add">
     <div class="card text-center">
-        <div class="card-header">Add an account</div>
+        <div class="card-header">Delete an account</div>
         <div class="card-body">
-            <form action="/account/{id}/edit" method="post">
-                <!--to pass the input across the past page-->
-                <input th:value=${editAccount.id} type="hidden" name="id" >
+            <form action="/account/{id}/delete" method="post">
+                <input th:value=${delAccount.id} type="hidden" name="id" >
                 <div class="form-group">
                     <label for="accountName">Account Name</label>
-                    <input th:value=${editAccount.name} type="text" class= "form-control" name="name" id="accountName" placeholder="Name of the account" required>
+                    <input th:value=${delAccount.name} type="text" class= "form-control" name="name" id="accountName" readonly>
                 </div>
                 <div class="form-group">
                     <label for="accountType">Type</label>
-                    <select class= "form-control" name="type" id="accountType" placeholder="Type of the account" required>
-                        <option th:each ="account: ${accountType}" th:selected="${editAccount.type} == ${account} ? true : false" th:text="${account}"></option>
-                    </select>
+                    <input th:value=${delAccount.type} type="text" class= "form-control" name="name" id="accountType" readonly>
                 </div>
                 <div class="form-group">
                     <label for="accountBalance">Balance</label>
-                    <input th:value=${editAccount.balance} type="number" min="0" step="any" class= "form-control" name="balance" id="accountBalance" placeholder="Balance for the account $" required>
+                    <input th:value=${delAccount.balance} type="number" min="0" step="any" class= "form-control" name="balance" id="accountBalance" readonly>
                 </div>
-                <button type="submit" class="btn btn-primary"> Update </button>
+                <button type="submit" class="btn btn-danger" > Delete </button>
             </form>
         </div>
     </div>
