@@ -1,6 +1,7 @@
 package com.dmarchante.kiddoh.controllers;
 
 import com.dmarchante.kiddoh.models.Account;
+import com.dmarchante.kiddoh.models.AppUser;
 import com.dmarchante.kiddoh.repositories.AccountRepo;
 import com.dmarchante.kiddoh.repositories.AppUserRepo;
 import com.dmarchante.kiddoh.repositories.TransactionRepository;
@@ -27,9 +28,11 @@ public class TransactionController {
 
     @GetMapping("/myAccounts")
     public String getAccounts(Principal p, Model m) {
-        List<Account> accounts = (List<Account>) accountRepo.findAll();
+        AppUser user = appUserRepo.findByUsername(p.getName());
+        List<Account> accounts = user.getMyAccounts();
 
         m.addAttribute("accounts", accounts);
+        //m.addAttribute()
 
         return "accounts";
     }

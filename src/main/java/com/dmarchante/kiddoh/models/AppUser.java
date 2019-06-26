@@ -33,6 +33,8 @@ public class AppUser implements UserDetails {
         return username;
     }
 
+    public List<Account> getMyAccounts() {return myAccounts; }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

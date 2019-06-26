@@ -62,12 +62,16 @@ public class Transaction {
     public void setDate(String date) { this.date = date; }
     public void setCategory(Category category) { this.category = category; }
     public void setAmount(BigDecimal amount) { this.amount = amount; }
-}
 
 
 /****************
- * Enum Class
+ * Enum
  * */
-public enum Category {
-    Toys, VideoGames, Movies, Books, Food, Clothing, Miscellaneous
+    public enum Category {
+        Toys, VideoGames, Movies, Books, Food, Clothing, Miscellaneous
+    }
 }
+
+
+
+
