@@ -47,7 +47,7 @@ public class KidDohApplication {
         appUserRepo.save(lotty);
 
         Account lottyChecking = new Account("Lotty's spending account!!!!", "Checking", new BigDecimal(100.00), lotty);
-        Account lottySavings = new Account("Lotty's no touchy account!!!!", "Checking", new BigDecimal(500.00), lotty);
+        Account lottySavings = new Account("Lotty's no touchy account!!!!", "Savings", new BigDecimal(500.00), lotty);
         accountRepo.save(lottyChecking);
         accountRepo.save(lottySavings);
 

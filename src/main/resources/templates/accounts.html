@@ -7,14 +7,14 @@
 <body>
     <h1>Kid-doh Accounts</h1>
     <div th:each="account : ${accounts}">
-        <div th:text="${account.name}"></div>
-        <div th:text="${account.type}"></div>
-        <div th:text="${account.balance}"></div>
-        <ul th:each="transaction : ${account.transactionList}">
-            <li th:text="${transaction.amount}">
-
-            </li>
-        </ul>
+        <span th:text="${account.name}"></span>
+        <span th:text="${account.type}"></span>
+        Balance: $<span th:text="${account.balance}"></span>
+        <div th:each="transaction : ${account.transactionList}">
+            <span th:text="${transaction.date}"></span>
+            <span th:text="${transaction.category}"></span>
+            <span th:text="${transaction.amount}"></span>
+        </div>
     </div>
 </body>
 </html>
