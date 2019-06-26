@@ -31,7 +31,10 @@ public class TransactionController {
     public String getAccounts(Principal p, Model m) {
         AppUser user = appUserRepo.findByUsername(p.getName());
         List<Account> accounts = user.getMyAccounts();
-        List<Transaction> transactions = accounts.getTransactionList().
+        // List<Transaction> transactions = accounts.get(0).getTransactionList();
+        // Loop over accounts
+        // loop over transactions
+        // m.add
 
         m.addAttribute("accounts", accounts);
         //m.addAttribute()

@@ -10,6 +10,11 @@
         <div th:text="${account.name}"></div>
         <div th:text="${account.type}"></div>
         <div th:text="${account.balance}"></div>
+        <ul th:each="transaction : ${account.transactionList}">
+            <li th:text="${transaction.amount}">
+
+            </li>
+        </ul>
     </div>
 </body>
 </html>

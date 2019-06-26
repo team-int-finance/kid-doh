@@ -31,6 +31,8 @@ public class Transaction {
 /****************
  * Constructors
  * */
+    public Transaction() {}
+
     public Transaction(String date, BigDecimal amount) {
         this.date = date;
         this.amount = amount;

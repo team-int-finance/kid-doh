@@ -24,7 +24,7 @@ public class Account {
     private AppUser user;
     //One account will have many transactions
     @OneToMany(mappedBy = "account")
-    private List<Transaction> transcationList;
+    private List<Transaction> transactionList;
 
     /*
        constructors
@@ -81,5 +81,5 @@ public class Account {
         this.user = user;
     }
 
-    public List<Transaction> getTranscationList() { return this.transcationList; }
+    public List<Transaction> getTransactionList() { return this.transactionList; }
 }
