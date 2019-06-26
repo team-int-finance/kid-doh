@@ -11,7 +11,7 @@
     <body>
         <div th:replace="${principal != null} ? ~{fragments/authHeader :: header(principal=${principal})} : ~{fragments/mainHeader:: header}"></div>
         <main>
-            <form action="/addAccount" method="post">
+            <form action="/account/add" method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" name="name" id="accountName" placeholder="Account Name" required>
                 </div>
