@@ -36,15 +36,22 @@ public class TransactionController {
         AppUser user = appUserRepo.findByUsername(p.getName());
         List<Account> accounts = user.getMyAccounts();
         List<Enum> categories = new ArrayList<Enum>(EnumSet.allOf(Transaction.Category.class));
+        List accountNames = new ArrayList();
+
+        for (Account account : accounts) {
+            accountNames.add(account.getName());
+        }
 
         m.addAttribute("accounts", accounts);
         m.addAttribute("categories", categories);
+        m.addAttribute("accountNames", accountNames);
 
         return "accounts";
     }
 
     @PostMapping("/myAccounts")
-    public RedirectView addTransaction(String date, String category, String amount) {
+    public RedirectView addTransaction(Principal p, String date, String category, String amount) {
+
 
         return new RedirectView("/myAccounts");
     }
