@@ -93,3 +93,7 @@ main {
   background-color: #ff5A49;
   border-color: #ff5A49;
 }
+
+.input-size {
+  max-width: 500px;
+}
