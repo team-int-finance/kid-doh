@@ -19,11 +19,11 @@
 
     <form action="/myAccounts" method="POST">
         <label>
-            Date: <input type="text" name="date" required/>
+            Date: <input type="text" name="date" />
         </label>
         <label>
             Category:
-            <select name="category" id="" required>
+            <select name="transactionCategory" id="category" >
                 <option th:each="category : ${categories}"
                         th:value="${category}"
                         th:text="${category}">
@@ -33,7 +33,7 @@
 
         <label>
             Account:
-            <select name="account" id="" required>
+            <select name="accountName" id="accountName" >
                 <option th:each="accountName : ${accountNames}"
                         th:value="${accountName}"
                         th:text="${accountName}">
@@ -42,7 +42,7 @@
         </label>
 
         <label>
-            Amount: <input type="text" name="amount" required/>
+            Amount: <input type="text" name="amount" />
         </label>
         <input type="submit">
     </form>

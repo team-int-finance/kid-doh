@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.math.BigDecimal;
@@ -33,26 +34,41 @@ public class TransactionController {
 
     @GetMapping("/myAccounts")
     public String getAccounts(Principal p, Model m) {
-        AppUser user = appUserRepo.findByUsername(p.getName());
-        List<Account> accounts = user.getMyAccounts();
-        List<Enum> categories = new ArrayList<Enum>(EnumSet.allOf(Transaction.Category.class));
-        List accountNames = new ArrayList();
+        try {
+            AppUser user = appUserRepo.findByUsername(p.getName());
+            List<Account> accounts = user.getMyAccounts();
+            List<Enum> categories = new ArrayList<Enum>(EnumSet.allOf(Transaction.Category.class));
+            List accountNames = new ArrayList();
 
-        for (Account account : accounts) {
-            accountNames.add(account.getName());
+            for (Account account : accounts) {
+                accountNames.add(account.getName());
+            }
+
+            m.addAttribute("accounts", accounts);
+            m.addAttribute("categories", categories);
+            m.addAttribute("accountNames", accountNames);
+
+            return "accounts";
+        } catch (Exception error) {
+            System.out.println("An error has occurred: " + error);
         }
 
-        m.addAttribute("accounts", accounts);
-        m.addAttribute("categories", categories);
-        m.addAttribute("accountNames", accountNames);
-
-        return "accounts";
+        return null;
     }
 
     @PostMapping("/myAccounts")
-    public RedirectView addTransaction(String date, String category, String account, String amount) {
+    public RedirectView addTransaction(@RequestParam String date, String transactionCategory, String accountName, String amount) {
+        try {
+            Account account = accountRepo.findByName(accountName);
+            Transaction transaction = new Transaction(date, Transaction.Category.valueOf(transactionCategory), new BigDecimal(amount), account);
 
+            transactionRepository.save(transaction);
 
-        return new RedirectView("/myAccounts");
+            return new RedirectView("/myAccounts");
+
+        } catch (Exception error) {
+
+            return new RedirectView("/error");
+        }
     }
 }

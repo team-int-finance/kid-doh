@@ -47,8 +47,8 @@ public class Transaction {
     public Transaction(String date, Category category, BigDecimal amount, Account account) {
         this.date = date;
         this.category = category;
-        this.amount = amount;
         this.account = account;
+        this.amount = amount;
     }
 
 /****************
