@@ -1,7 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin+Sketch|Open+Sans:600&display=swap');
 
+.yellow{
+  color: #fffccc;
+}
+
+.blue{
+  color: #50abe8;
+}
+
+.red{
+  color: #ff5A49;
+}
+
+.green{
+  color: #c3e886;
+}
+
+.purple{
+  color: #6B80FF;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
+  background-color: #fffccc;
 }
 
 #header-logo {
@@ -16,18 +37,59 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   background-color: #ff5A49;
+  margin-bottom: 50px;
+}
+
+.header-container nav {
+  padding-top: 45px;
 }
 
 .header-container a {
+  font-family: 'Cabin Sketch', cursive;
   text-decoration: none;
+  color: #fff;
+  padding-left: 15px;
+  font-size: 25px;
+}
+
+.header-container a:hover {
+  text-decoration: none;
+  color: #50ABE8;
 }
 
 .header-container h1 {
+  font-size: 60px;
   color: #fff;
+  padding-top: 15px;
 }
 
 main {
-  padding: 0 25px;
+  padding: 0 50px;
   max-width: 1400px;
   margin: 0 auto;
+}
+
+.main-heading {
+    font-family: 'Cabin Sketch', cursive;
+    color: #6B80FF;
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+.main-subheading {
+    color: gray;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+.btn-primary {
+  background-color: #c3e886;
+  color: black;
+  border-color: #c3e886;
+}
+
+.btn-primary:hover {
+  background-color: #ff5A49;
+  border-color: #ff5A49;
 }
