@@ -98,6 +98,21 @@ main {
   max-width: 500px;
 }
 
+.column-one {
+  width: 200px;
+  text-align: left
+}
+
+.column-two {
+  width: 50%;
+  text-align: left;
+}
+
+.column-three {
+  width: 200px;
+  text-align: right;
+}
+
 .account-header-container {
   display: flex;
   flex-direction: row;
@@ -106,8 +121,26 @@ main {
 
 .account-body-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.account-body-container > .cell {
+
+    width: 33.33%;
+
+}
+
+.cell {
+      overflow: hidden;
+      list-style: none;
+      box-sizing: border-box;
+      flex-grow: 1;
+}
+
+
+.account-body-container-grid {
+  display: grid;
+  grid-template-columns: 100px, auto, 100px;
 }
 
 .add-transaction-container {
