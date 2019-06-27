@@ -97,3 +97,22 @@ main {
 .input-size {
   max-width: 500px;
 }
+
+.account-header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.account-body-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.add-transaction-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+

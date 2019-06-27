@@ -26,7 +26,7 @@
 	            animationEnabled: true,
 	            theme: "light2",
 	            title: {
-		            text: "Visitor Demographics of a Website"
+		            text: "Transaction Breakdown"
 	            },
 	            data: [{
 		            type: "column",
@@ -42,9 +42,10 @@
     </head>
     <body>
         <div th:replace="${principal != null} ? ~{fragments/authHeader :: header(principal=${principal})} : ~{fragments/mainHeader:: header}"></div>
-        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+        <main>
+            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+        </main>
         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-
     </body>
 </html>

@@ -24,7 +24,7 @@
 <body>
 <div th:replace="${principal != null} ? ~{fragments/authHeader :: header(principal=${principal})} : ~{fragments/mainHeader:: header}"></div>
 <main>
-    <h1>Kid-doh Accounts</h1>
+    <h1 class="main-heading">Kid-doh Accounts</h1>
     <!--alert-->
     <div th:if="${message != null}">
         <div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -36,49 +36,56 @@
     </div>
 
     <div th:if="${!accounts.isEmpty()}">
-        <a href="/account/add"><button class="btn btn-primary">Add account</button></a>
 
         <div th:each="account : ${accounts}">
-            <span th:text="${account.name}"></span>
-            <span th:text="${account.type}"></span>
-            Balance: $<span th:text="${account.balance}"></span>
-            <a th:href="@{'/account/' + ${account.id} + '/edit'}"><button class="btn btn-primary">Edit account</button></a>
-            <a th:href="@{'/account/' + ${account.id} + '/delete'}"><button class="btn btn-danger">Delete account</button></a>
-            <div th:each="transaction : ${account.transactionList}">
-                <span th:text="${transaction.date}"></span>
-                <span th:text="${transaction.category}"></span>
-                <span th:text="${transaction.amount}"></span>
+            <div class="account-header-container">
+                <span th:text="${account.name}"></span>
+                <span th:text="${account.type}"></span>
+                <span>Category</span>
+                Balance: $<span th:text="${account.balance}"></span>
+                <!--<a th:href="@{'/account/' + ${account.id} + '/edit'}"><button class="btn btn-primary">Edit account</button></a>-->
+                <!--<a th:href="@{'/account/' + ${account.id} + '/delete'}"><button class="btn btn-danger">Delete account</button></a>-->
             </div>
 
+            <div th:each="transaction : ${account.transactionList}">
+                <div class="account-body-container">
+                    <span th:text="${transaction.date}"></span>
+                    <span th:text="${transaction.category}"></span>
+                    <span th:text="${transaction.amount}"></span>                </div>
+            </div>
+        </div>
         <form action="/myAccounts" method="POST">
-            <label>
-                Date: <input type="date" name="date" required/>
-            </label>
-            <label>
-                Category:
-                <select name="transactionCategory" id="category" >
-                    <option th:each="category : ${categories}"
-                            th:value="${category}"
-                            th:text="${category}">
-                    </option>
-                </select>
-            </label>
+            <div class="add-transaction-container">
+                <label>
+                    Date: <input type="date" name="date" required/>
+                </label>
+                <label>
+                    Category:
+                    <select name="transactionCategory" id="category" >
+                        <option th:each="category : ${categories}"
+                                th:value="${category}"
+                                th:text="${category}">
+                        </option>
+                    </select>
+                </label>
 
-            <label>
-                Account:
-                <select name="accountName" id="accountName" required>
-                    <option th:each="accountName : ${accountNames}"
-                            th:value="${accountName}"
-                            th:text="${accountName}">
-                    </option>
-                </select>
-            </label>
+                <label>
+                    Account:
+                    <select name="accountName" id="accountName" required>
+                        <option th:each="accountName : ${accountNames}"
+                                th:value="${accountName}"
+                                th:text="${accountName}">
+                        </option>
+                    </select>
+                </label>
 
-            <label>
-                Amount: <input type="number" min="0" step="any" name="amount" required/>
-            </label>
-            <button type="submit" class="btn btn-primary" >Submit Transaction</button>
+                <label>
+                    Amount: <input type="number" min="0" step="any" name="amount" required/>
+                </label>
+                <button type="submit" class="btn btn-primary" >Submit Transaction</button>            </div>
+
         </form>
+        <a href="/account/add"><button class="btn btn-primary">Add account</button></a>
     </div>
     <div th:if="${accounts.isEmpty()}">
         <a href="/account/add"><button class="btn btn-primary">Add account</button></a>
