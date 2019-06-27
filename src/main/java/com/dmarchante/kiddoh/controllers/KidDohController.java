@@ -14,11 +14,7 @@ public class KidDohController {
     @GetMapping("/")
     public RedirectView getHomePage(Model m, Principal p){
         m.addAttribute("principal", p);
-        if (p == null) {
-            return new RedirectView("/");
-        } else {
-            return new RedirectView( "/myAccounts");
-        }  //TODO change this to accounts
+        return p == null ? new RedirectView("/login") : new RedirectView("/myAccounts"); //TODO change this to accounts
     }
 
     @GetMapping("/signup")
@@ -32,4 +28,7 @@ public class KidDohController {
     public String logIn(){
         return "login";
     }
+
+    @GetMapping("/aboutUs")
+    public String aboutUs(){return "aboutUs";}
 }
