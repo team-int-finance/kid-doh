@@ -53,7 +53,7 @@
 
         <form action="/myAccounts" method="POST">
             <label>
-                Date: <input type="text" name="date" />
+                Date: <input type="date" name="date" required/>
             </label>
             <label>
                 Category:
@@ -67,7 +67,7 @@
 
             <label>
                 Account:
-                <select name="accountName" id="accountName" >
+                <select name="accountName" id="accountName" required>
                     <option th:each="accountName : ${accountNames}"
                             th:value="${accountName}"
                             th:text="${accountName}">
@@ -76,7 +76,7 @@
             </label>
 
             <label>
-                Amount: <input type="text" name="amount" required/>
+                Amount: <input type="number" min="0" step="any" name="amount" required/>
             </label>
             <button type="submit" class="btn btn-primary" >Submit Transaction</button>
         </form>
