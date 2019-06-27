@@ -103,12 +103,12 @@ public class TransactionController {
     }
 
     private DataPoint chartData(List<Transaction> transactions, Enum category, String categoryString) {
-        Integer count = 0;
+        BigDecimal count = new BigDecimal(0  );
         DataPoint dataPoint = new DataPoint();
 
         for(Transaction transaction : transactions) {
             if (transaction.getCategory() == category) {
-                count++;
+                count = count.add(transaction.getAmount());
             }
         }
 
