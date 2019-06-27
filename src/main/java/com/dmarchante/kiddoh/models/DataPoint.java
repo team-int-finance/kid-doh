@@ -1,8 +1,10 @@
 package com.dmarchante.kiddoh.models;
 
+import java.math.BigDecimal;
+
 public class DataPoint {
     private String label;
-    private Integer Y;
+    private BigDecimal Y;
 
     public String getLabel() {
         return label;
@@ -10,10 +12,10 @@ public class DataPoint {
     public void setLabel(String label) {
         this.label = label;
     }
-    public Integer getY() {
+    public BigDecimal getY() {
         return Y;
     }
-    public void setY(Integer y) {
+    public void setY(BigDecimal y) {
         Y = y;
     }
 }
