@@ -47,7 +47,7 @@ public class TransactionController {
                 accountNames.add(account.getName());
             }
 
-            m.addAttribute("principal", p);
+            m.addAttribute("principal",p);
             m.addAttribute("accounts", accounts);
             m.addAttribute("categories", categories);
             m.addAttribute("accountNames", accountNames);

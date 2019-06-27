@@ -6,14 +6,12 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
-    <link href="/style.css" rel="stylesheet" />
+    <link href="/main.css" rel="stylesheet" />
 </head>
 <body>
-<!--<div th:replace="fragments/authHeader :: header(principal)">...</div>-->
-<div class="add">
-    <div class="card text-center">
-        <div class="card-header">Add an account</div>
-        <div class="card-body">
+    <div th:replace="${principal != null} ? ~{fragments/authHeader :: header(principal=${principal})} : ~{fragments/mainHeader:: header}"></div>
+    <main>
+        <h3>Edit an account</h3>
             <form action="/account/{id}/edit" method="post">
                 <!--to pass the input across the past page-->
                 <input th:value="${editAccount.id}" type="hidden" name="id" >
@@ -29,12 +27,10 @@
                 </div>
                 <div class="form-group">
                     <label for="accountBalance">Balance</label>
-                    <input th:value="${editAccount.balance}" type="number" min="0" step="any" class= "form-control" name="balance" id="accountBalance" required>
+                    <input th:value="${editAccount.balance}" type="number" min="0" step="any" class= "form-control" name="balance" id="accountBalance" readonly>
                 </div>
                 <button type="submit" class="btn btn-primary"> Update </button>
             </form>
-        </div>
-    </div>
-</div>
+    </main>
 </body>
 </html>
