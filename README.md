@@ -2,7 +2,7 @@
 > the place where kids learn to control their dough :-)
 
 ## Summary
-> The kid-doh! application is a full featured finance application designed to teach the children how to handle their money wisely. Features include all of the ones you would expect from a finance application with a kid-doh! twist.
+> The kid-doh application is a full featured finance application designed to teach the children how to handle their money wisely. Features include all of the ones you would expect from a finance application with a kid-doh twist.
 
 ## Setting Up
 
