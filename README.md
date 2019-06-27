@@ -1,4 +1,4 @@
-# <span style="text-align:center">kid-doh!</span>
+![README Header](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/kiddohheader.png)
 > the place where kids learn to control their dough :-)
 
 ## Summary
