@@ -28,4 +28,7 @@ public class KidDohController {
     public String logInPage(){
         return "login";
     }
+
+    @GetMapping("/aboutUs")
+    public String aboutUs(){return "aboutUs";}
 }
