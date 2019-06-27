@@ -32,40 +32,40 @@
 
 ## How to Use Kid-Doh!
  * After successfully running the application, user would land into the login page as shown below :
- * ![Home page](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/homePage.png)
+  * ![Home page](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/homePage.png)
  
  * User can sign up for the application if they already don't have an account. User need to provide unique username and password. Sign up page is as shown below:
- * ![Sign up page](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/signUp.png)
+  * ![Sign up page](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/signUp.png)
  
  * After successfully registering for application or if user already had an account, after logging in user would land into accounts page which is as shown below:
- * ![My account page](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/myAccount.png)
+  * ![My account page](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/myAccount.png)
  
  * Upon clicking add account, user would be taken to account/add page where user can create an account as shown below:
- * ![Add account](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/addAccount.png)
+  * ![Add account](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/addAccount.png)
     
  * User can input name for the account, select either "checking/savings" as an account type and input balance amount for that account. Upon successfully creating an account user would be routed back to account page as shown below:
- * ![Add account successful](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/addedAccount.png)
+  * ![Add account successful](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/addedAccount.png)
  
  * User can now add transactions associated to account. User can add date for the transaction , select a category for it, select account if user have multiple accounts,  input amount for that transaction, then finally submit the transaction which will update the account balance and take user to accounts page as shown below: 
- * ![Add transaction successful](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/addedTransaction.png)
+  * ![Add transaction successful](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/addedTransaction.png)
  
  * User can select "Deposit" from drop down menu in category, in order to make any deposits to the accounts. 
- * ![Deposit](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/deposit.png)
+  * ![Deposit](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/deposit.png)
  
  * User can add multiple account as shown below:
- * ![Multiple Account](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/multiAccounts.png)
+  * ![Multiple Account](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/multiAccounts.png)
  
  * User can interact with edit and delete account button to preform respective actions. Upon user actions been successfully handled , user would be routed back to accounts page.
  
  * Upon clicking 'Dashboard' on the top of navigation bar, user would be routed to dash board page where graphical representation of data would be presented to user as shown below:
- * ![graph](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/graph.png)
+  * ![graph](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/graph.png)
  
 ## Architectural Design
    * Model View Controller design
-   * ![MVC](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/mvc.png)
+    * ![MVC](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/mvc.png)
 
    * Data base design 
-   * ![Data base design](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/database.png)
+    * ![Data base design](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/database.png)
 
 ## Technologies Used
 * Java
