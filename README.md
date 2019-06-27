@@ -47,7 +47,7 @@
   * ![Add account successful](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/addedAccount.png)
  
  * User can now add transactions associated to account. User can add date for the transaction , select a category for it, select account if user have multiple accounts,  input amount for that transaction, then finally submit the transaction which will update the account balance and take user to accounts page as shown below: 
-  * ![Add transaction successful](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/addedTransaction.png)
+  * ![Add transaction successful](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/addedTransactions.png)
  
  * User can select "Deposit" from drop down menu in category, in order to make any deposits to the accounts. 
   * ![Deposit](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/deposit.png)
