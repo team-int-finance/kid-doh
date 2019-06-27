@@ -30,5 +30,7 @@ public class KidDohController {
     }
 
     @GetMapping("/aboutUs")
-    public String aboutUs(){return "aboutUs";}
+    public String aboutUs(Principal p, Model m){
+        m.addAttribute("principal", p);
+        return "aboutUs";}
 }

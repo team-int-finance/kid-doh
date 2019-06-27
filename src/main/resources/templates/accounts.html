@@ -62,7 +62,6 @@
             </tbody>
         </table>
 
-    </div>
         <form action="/myAccounts" method="POST">
             <div class="add-transaction-container">
                 <label>
@@ -96,6 +95,7 @@
         </form>
         <a href="/account/add"><button class="btn btn-primary">Add account</button></a>
     </table>
+    </div>
     <div th:if="${accounts.isEmpty()}">
         <a href="/account/add"><button class="btn btn-primary">Add account</button></a>
     </div>

@@ -80,21 +80,28 @@ public class TransactionController {
     public String getDashboard(Model m, Principal p) throws IOException {
         try {
             AppUser user = appUserRepo.findByUsername(p.getName());
-            List<Account> accounts = user.getMyAccounts();
-            List<DataPoint> dataPoints = new ArrayList<>();
-            List<Transaction> transactions = accounts.get(0).getTransactionList();
+            if(user.getMyAccounts().size() > 0){
+                List<Account> accounts = user.getMyAccounts();
+                List<DataPoint> dataPoints = new ArrayList<>();
+                List<Transaction> transactions = accounts.get(0).getTransactionList();
 
-            dataPoints.add(chartData(transactions, Transaction.Category.Toys, "Toys"));
-            dataPoints.add(chartData(transactions, Transaction.Category.VideoGames, "Video Games"));
-            dataPoints.add(chartData(transactions, Transaction.Category.Movies, "Movies"));
-            dataPoints.add(chartData(transactions, Transaction.Category.Books, "Books"));
-            dataPoints.add(chartData(transactions, Transaction.Category.Food, "Food"));
-            dataPoints.add(chartData(transactions, Transaction.Category.Clothing, "Clothing"));
-            dataPoints.add(chartData(transactions, Transaction.Category.Miscellaneous, "Miscellaneous"));
-            dataPoints.add(chartData(transactions, Transaction.Category.Deposit, "Deposit"));
+                dataPoints.add(chartData(transactions, Transaction.Category.Toys, "Toys"));
+                dataPoints.add(chartData(transactions, Transaction.Category.VideoGames, "Video Games"));
+                dataPoints.add(chartData(transactions, Transaction.Category.Movies, "Movies"));
+                dataPoints.add(chartData(transactions, Transaction.Category.Books, "Books"));
+                dataPoints.add(chartData(transactions, Transaction.Category.Food, "Food"));
+                dataPoints.add(chartData(transactions, Transaction.Category.Clothing, "Clothing"));
+                dataPoints.add(chartData(transactions, Transaction.Category.Miscellaneous, "Miscellaneous"));
+                dataPoints.add(chartData(transactions, Transaction.Category.Deposit, "Deposit"));
 
-            m.addAttribute("principal", p);
-            m.addAttribute("dataPoints",dataPoints);
+                m.addAttribute("principal", p);
+                m.addAttribute("dataPoints",dataPoints);
+                m.addAttribute("appUser",user);
+            }
+            else{
+                m.addAttribute("principal", p);
+                m.addAttribute("appUser",null);
+            }
 
             return "dashboard";
         } catch (Exception error) {
