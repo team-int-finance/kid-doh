@@ -24,6 +24,7 @@ public class Account {
     //Many account will have one user
     @ManyToOne
     private AppUser user;
+
     //One account will have many transactions
     @OneToMany(mappedBy = "account")
     private List<Transaction> transactionList;
@@ -85,6 +86,9 @@ public class Account {
 
     public List<Transaction> getTransactionList() { return this.transactionList; }
 
+    public void setTransactionList(List<Transaction> transactionList) {
+        this.transactionList = transactionList;
+    }
 
     /*
         Methods: APIS

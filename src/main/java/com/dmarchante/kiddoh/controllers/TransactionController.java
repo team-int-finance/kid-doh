@@ -47,6 +47,7 @@ public class TransactionController {
                 accountNames.add(account.getName());
             }
 
+            m.addAttribute("principal", p);
             m.addAttribute("accounts", accounts);
             m.addAttribute("categories", categories);
             m.addAttribute("accountNames", accountNames);
@@ -79,24 +80,67 @@ public class TransactionController {
     }
 
     @GetMapping("/dashboard")
-    public String getDashboard(ModelMap m) throws IOException {
+//    Toys, VideoGames, Movies, Books, Food, Clothing, Miscellaneous, Deposit
+
+    public String getDashboard(Model m, Principal p) throws IOException {
+        AppUser user = appUserRepo.findByUsername(p.getName());
+        List<Account> accounts = user.getMyAccounts();
+        List<Transaction> transactions = accounts.get(0).getTransactionList();
+//        List<Transaction> transactionToys = transactionRepository.findAllByCategory();
+        Integer toyCount = 0;
+
+        for(Transaction transaction : transactions) {
+            if (transaction.getCategory() == Transaction.Category.Toys) {
+                toyCount++;
+            }
+        }
+
+//        Integer toyCount = transactions.size();
+
         List<DataPoint> dataPoints = new ArrayList<>();
 
         DataPoint dataPoint = new DataPoint();
-        dataPoint.setX(10);
-        dataPoint.setY(15);
+        dataPoint.setY(toyCount);
+        dataPoint.setLabel("Toys");
         dataPoints.add(dataPoint);
 
-        dataPoint = new DataPoint();
-        dataPoint.setX(20);
-        dataPoint.setY(21);
-        dataPoints.add(dataPoint);
+//        dataPoint = new DataPoint();
+//        dataPoint.setY(20);
+//        dataPoint.setX(2);
+//        dataPoints.add(dataPoint);
+//
+//        dataPoint = new DataPoint();
+//        dataPoint.setY(30);
+//        dataPoint.setX(3);
+//        dataPoints.add(dataPoint);
+//
+//        dataPoint = new DataPoint();
+//        dataPoint.setY(30);
+//        dataPoint.setX(4);
+//        dataPoints.add(dataPoint);
+//
+//        dataPoint = new DataPoint();
+//        dataPoint.setY(30);
+//        dataPoint.setX(5);
+//
+//        dataPoints.add(dataPoint);
+//        dataPoint = new DataPoint();
+//        dataPoint.setY(30);
+//        dataPoint.setX(6);
+//
+//        dataPoints.add(dataPoint);
+//        dataPoint = new DataPoint();
+//        dataPoint.setY(30);
+//        dataPoint.setX(7);
+//
+//        dataPoints.add(dataPoint);
+//        dataPoint = new DataPoint();
+//        dataPoint.setY(30);
+//        dataPoint.setX(8);
+//        dataPoints.add(dataPoint);
 
-        dataPoint = new DataPoint();
-        dataPoint.setX(30);
-        dataPoint.setY(8);
-        dataPoints.add(dataPoint);
 
+        m.addAttribute("principal", p);
         m.addAttribute("dataPoints",dataPoints);
 
         return "dashboard";

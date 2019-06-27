@@ -3,55 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Kid-doh | Accounts</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link href="/main.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Kid-doh Accounts</h1>
-    <div th:if="${!accounts.isEmpty()}">
-        <div th:each="account : ${accounts}">
-            <span th:text="${account.name}"></span>
-            <span th:text="${account.type}"></span>
-            Balance: $<span th:text="${account.balance}"></span>
-            <div th:each="transaction : ${account.transactionList}">
-                <span th:text="${transaction.date}"></span>
-                <span th:text="${transaction.category}"></span>
-                <span th:text="${transaction.amount}"></span>
+    <div th:replace="${principal != null} ? ~{fragments/authHeader :: header(principal=${principal})} : ~{fragments/mainHeader:: header}"></div>
+    <main>
+        <h1>Kid-doh Accounts</h1>
+        <div th:if="${!accounts.isEmpty()}">
+            <div th:each="account : ${accounts}">
+                <span th:text="${account.name}"></span>
+                <span th:text="${account.type}"></span>
+                Balance: $<span th:text="${account.balance}"></span>
+                <div th:each="transaction : ${account.transactionList}">
+                    <span th:text="${transaction.date}"></span>
+                    <span th:text="${transaction.category}"></span>
+                    <span th:text="${transaction.amount}"></span>
+                </div>
             </div>
+
+            <form action="/myAccounts" method="POST">
+                <label>
+                    Date: <input type="text" name="date" />
+                </label>
+                <label>
+                    Category:
+                    <select name="transactionCategory" id="category" >
+                        <option th:each="category : ${categories}"
+                                th:value="${category}"
+                                th:text="${category}">
+                        </option>
+                    </select>
+                </label>
+
+                <label>
+                    Account:
+                    <select name="accountName" id="accountName" >
+                        <option th:each="accountName : ${accountNames}"
+                                th:value="${accountName}"
+                                th:text="${accountName}">
+                        </option>
+                    </select>
+                </label>
+
+                <label>
+                    Amount: <input type="text" name="amount" />
+                </label>
+                <input type="submit">
+
+                <a th:href="@{/account/add}">Make a new account!</a>
+            </form>
         </div>
-
-        <form action="/myAccounts" method="POST">
-            <label>
-                Date: <input type="text" name="date" />
-            </label>
-            <label>
-                Category:
-                <select name="transactionCategory" id="category" >
-                    <option th:each="category : ${categories}"
-                            th:value="${category}"
-                            th:text="${category}">
-                    </option>
-                </select>
-            </label>
-
-            <label>
-                Account:
-                <select name="accountName" id="accountName" >
-                    <option th:each="accountName : ${accountNames}"
-                            th:value="${accountName}"
-                            th:text="${accountName}">
-                    </option>
-                </select>
-            </label>
-
-            <label>
-                Amount: <input type="text" name="amount" />
-            </label>
-            <input type="submit">
-
-            <a th:href="@{/account/add}">Make a new account!</a>
-        </form>
-    </div>
-    <div th:if="${accounts.isEmpty()}">
-        <h2>Please add an <a th:href="@{/account/add}">account</a></h2>
-    </div>
+        <div th:if="${accounts.isEmpty()}">
+            <h2>Please add an <a th:href="@{/account/add}">account</a></h2>
+        </div>
+    </main>
 </body>
 </html>
