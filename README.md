@@ -61,8 +61,10 @@
  * ![graph](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/graph.png)
  
 ## Architectural Design
+   * Model View Controller design
+   * ![MVC](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/mvc.png)
+
    * Data base design 
-   
    * ![Data base design](https://github.com/team-int-finance/kid-doh/blob/master/src/main/resources/static/images/database.png)
 
 ## Technologies Used
