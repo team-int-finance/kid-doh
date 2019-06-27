@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
 
@@ -11,9 +12,13 @@ import java.security.Principal;
 public class KidDohController {
 
     @GetMapping("/")
-    public String getHomePage(Model m, Principal p){
+    public RedirectView getHomePage(Model m, Principal p){
         m.addAttribute("principal", p);
-        return p == null ? "login" : "tempAccounts"; //TODO change this to accounts
+        if (p == null) {
+            return new RedirectView("/");
+        } else {
+            return new RedirectView( "/myAccounts");
+        }  //TODO change this to accounts
     }
 
     @GetMapping("/signup")
