@@ -1,14 +1,14 @@
 package com.dmarchante.kiddoh.models;
 
 public class DataPoint {
-    private Integer X;
+    private String label;
     private Integer Y;
 
-    public Integer getX() {
-        return X;
+    public String getLabel() {
+        return label;
     }
-    public void setX(Integer x) {
-        X = x;
+    public void setLabel(String label) {
+        this.label = label;
     }
     public Integer getY() {
         return Y;
