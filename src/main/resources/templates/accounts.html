@@ -50,8 +50,8 @@
                         Balance: $<span th:text="${account.balance}"></span>
                     </th>
                 </tr>
-                <!--<a th:href="@{'/account/' + ${account.id} + '/edit'}"><button class="btn btn-primary">Edit account</button></a>-->
-                <!--<a th:href="@{'/account/' + ${account.id} + '/delete'}"><button class="btn btn-danger">Delete account</button></a>-->
+                <a th:href="@{'/account/' + ${account.id} + '/edit'}"><button class="btn btn-primary">Edit account</button></a>
+                <a th:href="@{'/account/' + ${account.id} + '/delete'}"><button class="btn btn-danger">Delete account</button></a>
             </thead>
             <tbody>
                 <tr th:each="transaction : ${account.transactionList}">
