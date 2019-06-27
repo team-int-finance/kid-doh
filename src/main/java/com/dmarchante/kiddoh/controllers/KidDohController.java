@@ -12,13 +12,14 @@ import java.security.Principal;
 public class KidDohController {
 
     @GetMapping("/")
-    public RedirectView getHomePage(Model m, Principal p){
+    public RedirectView getHomePage(Model m, Principal p) {
         m.addAttribute("principal", p);
+
         if (p == null) {
-            return new RedirectView("/");
+            return new RedirectView("/login");
         } else {
-            return new RedirectView( "/myAccounts");
-        }  //TODO change this to accounts
+            return new RedirectView("myAccounts"); //TODO change this to accounts
+        }
     }
 
     @GetMapping("/signup")
@@ -29,7 +30,7 @@ public class KidDohController {
     }
 
     @GetMapping("/login")
-    public String logIn(){
+    public String logInPage(){
         return "login";
     }
 }
