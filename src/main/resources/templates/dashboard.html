@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head xmlns:th="http://www.thymeleaf.org">
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <title>Dashboard</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous">
+        <link href="/main.css" rel="stylesheet" />
+        <script th:inline="javascript">
+        /*<![CDATA[*/
+        window.onload = function() {
+
+            var dataPoints = /*[[${dataPoints}]]*/ 'default';
+
+            dataPoints.forEach(myFunction);
+            function myFunction(value, index, array) {
+    	        console.log(value);
+            }
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+	            animationEnabled: true,
+	            theme: "light2",
+	            title: {
+		            text: "Transaction Breakdown"
+	            },
+	            data: [{
+		            type: "column",
+		            dataPoints: []
+	            }]
+            });
+
+        chart.options.data[0].dataPoints = dataPoints;
+        chart.render();
+    /*]]>*/
+    }
+    </script>
+    </head>
+    <body>
+        <div th:replace="${principal != null} ? ~{fragments/authHeader :: header(principal=${principal})} : ~{fragments/mainHeader:: header}"></div>
+        <div th:if="${appUser != null}">
+            <main>
+                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            </main>
+            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+            <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+        </div>
+    </body>
+</html>

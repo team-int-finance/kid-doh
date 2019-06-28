@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Kid-doh | Accounts</title>
+    <!--bootstrap-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <!--Inner styling-->
+    <link href="/main.css" rel="stylesheet" />
+    <!--link for boot strap JS-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                     crossorigin="anonymous">
+</script>
+</head>
+<body>
+<div th:replace="${principal != null} ? ~{fragments/authHeader :: header(principal=${principal})} : ~{fragments/mainHeader:: header}"></div>
+<main>
+    <h1 class="main-heading">Kid-doh Accounts</h1>
+    <!--alert-->
+    <div th:if="${message != null}">
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <strong th:text="${message}"></strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
+    <div th:if="${!accounts.isEmpty()}">
+
+        <table th:each="account : ${accounts}" class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">
+                        <span th:text="${account.name}"></span> - <span th:text="${account.type}"></span>
+                    </th>
+                    <th scope="col">
+                        <span>Category</span>
+                    </th>
+                    <th scope="col" class="text-right">
+                        Balance: $<span th:text="${account.balance}"></span>
+                    </th>
+                </tr>
+                <a th:href="@{'/account/' + ${account.id} + '/edit'}"><button class="btn btn-primary">Edit account</button></a>
+                <a th:href="@{'/account/' + ${account.id} + '/delete'}"><button class="btn btn-danger">Delete account</button></a>
+            </thead>
+            <tbody>
+                <tr th:each="transaction : ${account.transactionList}">
+                    <td th:text="${transaction.date}"></td>
+                    <td th:text="${transaction.category}"></td>
+                    <td th:text="${transaction.amount}" class="text-right"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form action="/myAccounts" method="POST">
+            <div class="add-transaction-container">
+                <label>
+                    Date: <input type="date" name="date" required/>
+                </label>
+                <label>
+                    Category:
+                    <select name="transactionCategory" id="category" >
+                        <option th:each="category : ${categories}"
+                                th:value="${category}"
+                                th:text="${category}">
+                        </option>
+                    </select>
+                </label>
+
+                <label>
+                    Account:
+                    <select name="accountName" id="accountName" required>
+                        <option th:each="accountName : ${accountNames}"
+                                th:value="${accountName}"
+                                th:text="${accountName}">
+                        </option>
+                    </select>
+                </label>
+
+                <label>
+                    Amount: <input type="number" min="0" step="any" name="amount" required/>
+                </label>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <a href="/account/add"><button class="btn btn-primary">Add account</button></a>
+    </table>
+    </div>
+    <div th:if="${accounts.isEmpty()}">
+        <a href="/account/add"><button class="btn btn-primary">Add account</button></a>
+    </div>
+</main>
+</body>
+</html>

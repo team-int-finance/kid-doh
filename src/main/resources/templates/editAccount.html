@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Account</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link href="/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div th:replace="${principal != null} ? ~{fragments/authHeader :: header(principal=${principal})} : ~{fragments/mainHeader:: header}"></div>
+    <main>
+        <h3>Edit an account</h3>
+            <form action="/account/{id}/edit" method="post">
+                <!--to pass the input across the past page-->
+                <input th:value="${editAccount.id}" type="hidden" name="id" >
+                <div class="form-group">
+                    <label for="accountName">Account Name</label>
+                    <input type="text" th:value="${editAccount.name}"  class= "form-control" name="name" id="accountName" required>
+                </div>
+                <div class="form-group">
+                    <label for="accountType">Type</label>
+                    <select class= "form-control" name="type" id="accountType" placeholder="Type of the account" required>
+                        <option th:each ="account: ${accountType}" th:selected="${editAccount.type} == ${account} ? true : false" th:text="${account}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="accountBalance">Balance</label>
+                    <input th:value="${editAccount.balance}" type="number" min="0" step="any" class= "form-control" name="balance" id="accountBalance" readonly>
+                </div>
+                <button type="submit" class="btn btn-primary"> Update </button>
+            </form>
+    </main>
+</body>
+</html>
