@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockServletContext;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -93,16 +94,27 @@ public class KidDohApplicationTests {
 		return user("user1").password("password").roles("ADMIN");
 	}
 
+
+	//suggested to help with other integration tests.
+//	public static RequestPostProcessor testUser1(){
+//		return user("user1").password("password").authorities(new GrantedAuthority() {
+//			@Override
+//			public String getAuthority() {
+//				return "role_admin";
+//			}
+//		});
+//	}
+
 	@WithMockUser
 	@Test
 	public void testIntegrationAddAccount() throws Exception{
-		mockMvc.perform(get("/account/add").with(testUser())).andExpect(content().string(containsString("Dashboard")));
+		mockMvc.perform(get("/account/add").with(testUser1())).andExpect(content().string(containsString("Dashboard")));
 	}
 
 //	@WithMockUser
 //	@Test
 //	public void testIntegrationMyAccounts() throws Exception{
-//		mockMvc.perform(get("/myAccounts").with(testUser())).andExpect(content().string(containsString("account")));
+//		mockMvc.perform(get("/myAccounts").with(testUser1())).andExpect(content().string(containsString("account")));
 //	}
 
 }
