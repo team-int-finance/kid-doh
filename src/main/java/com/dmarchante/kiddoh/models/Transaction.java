@@ -20,6 +20,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    // Should format the date
     private String date;
     private Category category;
     private BigDecimal amount;
@@ -31,6 +32,7 @@ public class Transaction {
 /****************
  * Constructors
  * */
+    // Are all of these constructors necessary?
     public Transaction() {}
 
     public Transaction(String date, BigDecimal amount) {
