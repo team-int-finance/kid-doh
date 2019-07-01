@@ -28,6 +28,7 @@ public class AccountController {
 
     @GetMapping("/account/add")
     public String addAccount(Model m, Principal p){
+        // Types could be put into enum
         //Type of account available
         List<String> accountType = new ArrayList<>();
 

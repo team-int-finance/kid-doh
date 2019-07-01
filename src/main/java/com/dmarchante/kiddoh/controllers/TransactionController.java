@@ -34,6 +34,11 @@ public class TransactionController {
     @Autowired
     private TransactionRepository transactionRepository;
 
+    // This controller should only have CRUD functionality associated with transactions in it.
+
+
+
+    // This should be moved to Account controller
     @GetMapping("/myAccounts")
     public String getAccounts(Principal p, Model m) {
         try {
@@ -57,6 +62,7 @@ public class TransactionController {
         }
     }
 
+    // This should be moved to Account controller
     @PostMapping("/myAccounts")
     public RedirectView addTransaction(@RequestParam String date, String transactionCategory, String accountName, String amount) {
         try {
@@ -76,6 +82,7 @@ public class TransactionController {
         }
     }
 
+    // This should be in the KidDoh controller
     @GetMapping("/dashboard")
     public String getDashboard(Model m, Principal p) throws IOException {
         try {
@@ -109,6 +116,7 @@ public class TransactionController {
         }
     }
 
+    // This should be in the KidDoh controller
     private DataPoint chartData(List<Transaction> transactions, Enum category, String categoryString) {
         BigDecimal count = new BigDecimal(0  );
         DataPoint dataPoint = new DataPoint();

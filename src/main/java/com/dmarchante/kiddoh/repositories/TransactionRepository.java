@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface TransactionRepository extends CrudRepository<Transaction, Long> {
+    // Do we need these?
     Transaction findById(long id);
     List<Transaction> findAllByCategory(Enum category);
 }
