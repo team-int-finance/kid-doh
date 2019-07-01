@@ -10,13 +10,7 @@
         <script th:inline="javascript">
         /*<![CDATA[*/
         window.onload = function() {
-
             var dataPoints = /*[[${dataPoints}]]*/ 'default';
-
-            dataPoints.forEach(myFunction);
-            function myFunction(value, index, array) {
-    	        console.log(value);
-            }
 
             var chart = new CanvasJS.Chart("chartContainer", {
 	            animationEnabled: true,
@@ -26,11 +20,10 @@
 	            },
 	            data: [{
 		            type: "column",
-		            dataPoints: []
+		            dataPoints: dataPoints,
 	            }]
             });
 
-        chart.options.data[0].dataPoints = dataPoints;
         chart.render();
     /*]]>*/
     }
